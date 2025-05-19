@@ -36,7 +36,7 @@ def convert_file(filename):
 
 
 # Example usage
-directory = "/home/atuin/b143dc/b143dc22/GCD/Diffusion_model_graph_outputs/modified/image/changed_labels/total"
+directory = 
 
 for filename in os.listdir(directory):
     if filename.endswith(".npy"):
