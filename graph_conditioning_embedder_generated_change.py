@@ -58,8 +58,8 @@ class GraphEncoder(nn.Module):
         return z
 
 if __name__ == "__main__":
-    input_folder = '/home/atuin/b143dc/b143dc22/GCD/generated_graphs/change_one_node_graph'
-    adj_matrix_base = '/home/atuin/b143dc/b143dc22/GCD/kidney_preprocessed'
+    input_folder = path/to/generated_graphs/change_one_node
+    adj_matrix_base = path/to/kidney_preprocessed
     
     subdirectories = [d for d in os.listdir(input_folder) if os.path.isdir(os.path.join(input_folder, d))]
     max_context_length = 256  # Adjust based on your requirement
