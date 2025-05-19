@@ -2,8 +2,8 @@ import os
 import shutil
 
 # Define the source and destination directories
-source_dir = "/home/atuin/b143dc/b143dc22/GCD/Diffusion_model_graph_outputs/copy_paste_short/manual"
-destination_dir = "/home/atuin/b143dc/b143dc22/GCD/Diffusion_model_graph_outputs/copy_paste_short/manual_total"
+source_dir =
+destination_dir = 
 
 # Ensure the destination directory exists
 os.makedirs(destination_dir, exist_ok=True)
