@@ -62,8 +62,8 @@ def process_graphs(base_dir, output_dir, num_classes=4):
         print(f"Processed {folder}: node {node} class {old_class} -> {new_class}")
         
 # Paths for the base and output directories
-base_dir = '/home/atuin/b143dc/b143dc22/GCD/kidney_preprocessed/'
-output_dir = '/home/atuin/b143dc/b143dc22/GCD/generated_graphs/change_one_node_graph/'
+base_dir = path/to/preprocessed
+output_dir = path/to/generated_graphs/change_one_node
 
 # Process all graphs in the base directory
 process_graphs(base_dir, output_dir)
