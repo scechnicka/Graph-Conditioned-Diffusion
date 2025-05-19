@@ -2,7 +2,7 @@ import numpy as np
 import os
 
 # Base directory where the results folders are located
-base_dir = "/vol/biomedic3/sc7718/Graph_conditioned_diffusion/kidney_preprocessed/"
+base_dir = path/to/kidney_preprocessed
 
 # Iterate through each results directory
 for i in range(0, 1982):  # Range is inclusive of 1981
