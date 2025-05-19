@@ -3,10 +3,10 @@ import shutil
 import re 
 
 # Source directory where the subfolders are located
-source_dir = 
+source_dir = path/to/diffusion_model_graph_outputs/modified/image/changed_labels
 
 # Destination directory where you want to move and rename the files
-dest_dir = 
+dest_dir = path/to/diffusion_model_graph_outputs/modified/image/changed_labels_total
 
 # Create the destination directory if it doesn't exist
 if not os.path.exists(dest_dir):
