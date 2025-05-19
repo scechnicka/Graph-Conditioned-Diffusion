@@ -48,8 +48,8 @@ def find_changed_node(original_features, modified_features):
     return None
 
 def main():
-   base_original = '/home/atuin/b143dc/b143dc22/GCD/kidney_preprocessed'
-   base_modified = '/home/atuin/b143dc/b143dc22/GCD/generated_graphs/change_one_node_graph'
+   base_original = path/to/preprocessed
+   base_modified = path/to/generated_graphs/change_one_node_graph
    
    colors = np.array([[0, 0, 0],  # Black
                      [255, 0, 0],  # Red
