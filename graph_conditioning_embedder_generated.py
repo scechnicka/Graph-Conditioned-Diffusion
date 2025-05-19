@@ -122,7 +122,7 @@ if __name__ == "__main__":
     #use_distances = True # if false treats all distances > 0 as 'connected' and binarizes mask
     # if we want to add distances we have to add it to the Attention class
     # New single folder path
-    input_folder = '/home/atuin/b143dc/b143dc22/GCD/generated_graphs/partial_manual_1024'
+    input_folder = path/to/generated_graphs
 
     # Scan the directory for feature vector and adjacency matrix files
     feature_vector_files = glob.glob(os.path.join(input_folder, 'partial*_features.npy'))
