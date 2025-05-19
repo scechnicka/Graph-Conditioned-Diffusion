@@ -27,7 +27,7 @@ def calculate_mean_std(folder_path):
     return mean, std
 
 # Example usage
-folder_path = 
+folder_path = folder_with_results
 mean, std = calculate_mean_std(folder_path)
 print(f"Mean: {mean}")
 print(f"Standard Deviation: {std}")
