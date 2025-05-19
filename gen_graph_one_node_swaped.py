@@ -79,7 +79,7 @@ def process_graph_and_save(base_dir, output_dir):
     print(f"Saved modified graph for {graph1_dir}, with node {swapped_node2} from {graph2_dir}.")
 
 # Paths for the base and output directories
-base_dir = '/home/atuin/b143dc/b143dc22/GCD/kidney_preprocessed/'
-output_dir = '/home/atuin/b143dc/b143dc22/GCD/generated_graphs/exchange_one_node_graph/'
+base_dir = 
+output_dir = 
 # Process one random graph pair
 process_graph_and_save(base_dir, output_dir)
