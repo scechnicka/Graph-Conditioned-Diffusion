@@ -117,8 +117,8 @@ def save_features(features, filename):
                     f"Average Area: {feature['Average Area']}, Bounding Box: {feature['Bounding Box']}\n")
 
 
-input_folder = 
-base_output_folder = 
+input_folder = path/to/folder/with_data
+base_output_folder = where/you/want/to/save_data
 npz_files = glob.glob(os.path.join(input_folder, '*.npz'))
 total_files = len(npz_files)
 processed_files = 0
