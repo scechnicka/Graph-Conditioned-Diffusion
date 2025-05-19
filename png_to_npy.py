@@ -77,8 +77,8 @@ def batch_png_to_npy(png_dir, npy_dir):
 
 # Example usage
 if __name__ == "__main__":
-    # Define input and output directories
-    png_directory = 
-    npy_directory = 
+    # Define input and output directories e.g.
+    png_directory = path/to/diffusion_model_graph_outputs/copy_paste_short/manual_labels
+    npy_directory = path/to/diffusion_model_graph_outputs/copy_paste_short/manual_labels_npy
    # Convert PNG images to categorized NumPy arrays
     batch_png_to_npy(png_directory, npy_directory)
