@@ -1,9 +1,8 @@
 import os
 import shutil
 
-source_dir = "/home/atuin/b143dc/b143dc22/GCD/Diffusion_model_graph_outputs/copy_paste/image_labels_npy"
-destination_dir = "/home/atuin/b143dc/b143dc22/GCD/Diffusion_model_graph_outputs/copy_paste/image_labels_total"
-
+source_dir = 
+destination_dir = 
 # Ensure the destination directory exists
 os.makedirs(destination_dir, exist_ok=True)
 
