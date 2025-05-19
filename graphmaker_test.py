@@ -14,8 +14,8 @@ from scipy.ndimage import find_objects
 import math
 import h5py
 
-ids_path = '/home/atuin/b143dc/b143dc22/GCD_UNETS/test_data.h5'
-h5_path = '/home/atuin/b143dc/b143dc22/GCD_UNETS/test_data.h5'
+ids_path = 
+h5_path = 
 colors = ['red','green','blue','cyan']
 
 colors = np.array([[0, 0, 0],  # Black
@@ -348,7 +348,7 @@ def main(base_output_folder):
 if __name__ == "__main__":
     # Define the input directory where .npz files are located
     # Define the output directory where you want to save the results
-    base_output_folder = '/home/atuin/b143dc/b143dc22/GCD_UNETS/kidney_preprocessed_test/'
+    base_output_folder = 
 
     # Run the main function
     main(base_output_folder)
