@@ -73,8 +73,8 @@ def find_removed_node(original_adj, modified_adj):
     return None
 
 def main():
-    base_original = 
-    base_modified = 
+    base_original = path/to/preprocessed
+    base_modified = path/to/generated_graphs/removed_node
     
     colors = np.array([[0, 0, 0],  # Black
                       [255, 0, 0],  # Red
