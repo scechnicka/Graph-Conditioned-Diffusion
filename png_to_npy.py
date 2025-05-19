@@ -78,7 +78,7 @@ def batch_png_to_npy(png_dir, npy_dir):
 # Example usage
 if __name__ == "__main__":
     # Define input and output directories
-    png_directory = "/home/atuin/b143dc/b143dc22/GCD_UNETS/mask_conditioned/labels_pure"
-    npy_directory = "/home/atuin/b143dc/b143dc22/GCD_UNETS/mask_conditioned/labels_npy"
+    png_directory = 
+    npy_directory = 
    # Convert PNG images to categorized NumPy arrays
     batch_png_to_npy(png_directory, npy_directory)
