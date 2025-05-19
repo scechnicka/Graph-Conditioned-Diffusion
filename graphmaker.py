@@ -322,9 +322,9 @@ def main(input_folder, base_output_folder):
 
 if __name__ == "__main__":
     # Define the input directory where .npz files are located
-    input_folder = 
+    input_folder = path/file/to/npz_train_data
     # Define the output directory where you want to save the results
-    base_output_folder = 
+    base_output_folder = output/path/to_preprocessed_data
 
     # Run the main function
     main(input_folder, base_output_folder)
