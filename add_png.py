@@ -1,7 +1,7 @@
 import os
 
 # Specify the directory containing the files to be renamed
-directory = "/home/atuin/b143dc/b143dc22/GCD/Diffusion_model_graph_outputs/real/image_total/"
+directory = 
 
 # Loop through each file in the directory
 for filename in os.listdir(directory):
