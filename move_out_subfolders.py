@@ -1,8 +1,8 @@
 import os
 import shutil
 
-source_dir =
-destination_dir = 
+source_dir = path/to/diffusion_model_graph_outputs/copy_paste/image
+destination_dir = path/to/diffusion_model_graph_outputs/copy_paste/image_total
 
 # Ensure the destination directory exists
 os.makedirs(destination_dir, exist_ok=True)
