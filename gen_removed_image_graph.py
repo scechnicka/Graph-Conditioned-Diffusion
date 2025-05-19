@@ -73,8 +73,8 @@ def find_removed_node(original_adj, modified_adj):
     return None
 
 def main():
-    base_original = '/home/atuin/b143dc/b143dc22/GCD/kidney_preprocessed'
-    base_modified = '/home/atuin/b143dc/b143dc22/GCD/generated_graphs/removed_node_graphs'
+    base_original = 
+    base_modified = 
     
     colors = np.array([[0, 0, 0],  # Black
                       [255, 0, 0],  # Red
