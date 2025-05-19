@@ -2,8 +2,8 @@ import os
 import shutil
 
 # Define the source and destination directories
-source_dir =
-destination_dir = 
+source_dir = path/to/diffusion_model_graph_outputs/copy_paste_short/manual
+destination_dir = path/to/diffusion_model_graph_outputs/copy_paste_short/manual_total
 
 # Ensure the destination directory exists
 os.makedirs(destination_dir, exist_ok=True)
