@@ -41,8 +41,8 @@ def convert_npys_to_custom_colored_pngs(input_dir, output_dir):
             print(f"Saved {png_path}")
 
 # Specify your input and output directories
-input_dir = 
-output_dir = 
+input_dir = path/to/pure_diffusion/generated-uncond-labels
+output_dir = path/to/pure_diffusion/generated-uncond-labels_pngs
 
 # Call the function
 convert_npys_to_custom_colored_pngs(input_dir, output_dir)
