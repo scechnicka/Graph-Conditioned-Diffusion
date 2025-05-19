@@ -2,10 +2,10 @@ import numpy as np
 import os
 
 # Base directory paths
-base_path_class_encoding = '/vol/biomedic3/sc7718/Graph_conditioned_diffusion/kidney_preprocessed/'
-base_path_positional_embeddings = '/vol/biomedic3/sc7718/Graph_conditioned_diffusion/kidney_preprocessed/'
-base_path_feature_vecs = '/vol/biomedic3/sc7718/Graph_conditioned_diffusion/BYOL/feature_vecs/'
-base_output_path = '/vol/biomedic3/sc7718/Graph_conditioned_diffusion/kidney_preprocessed'
+base_path_class_encoding = path/to/kidney_preprocessed
+base_path_positional_embeddings = path/to/kidney_preprocessed
+base_path_feature_vecs = path/to/BYOL/feature_vecs/
+base_output_path = path/to/kidney_preprocessed
 
 # Loop through each set of files
 for i in range(1982):  # Assuming X ranges from 0 to 1981
