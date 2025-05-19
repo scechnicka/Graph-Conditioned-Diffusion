@@ -17,7 +17,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 num_classes = 20  # Adjust according to your classification task
-img_path = "/home/atuin/b143dc/b143dc22/GCD_UNETS/kidney_preprocessed_test/"
+img_path = path/to/kidney_preprocessed_test/
 learning_rate = 3e-4
 save_every_epoch = 1000
 batch_size = 16
