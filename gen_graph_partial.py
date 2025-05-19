@@ -322,8 +322,8 @@ def generate_partial_graphs(base_dir, output_dir, num_graphs):
     
 
 # Example usage
-base_dir = '/home/atuin/b143dc/b143dc22/GCD/kidney_preprocessed/'
-output_dir = '/home/atuin/b143dc/b143dc22/GCD/generated_graphs/partial_manual_1024'  
+base_dir = 
+output_dir = 
 num_graphs = 9990
 generate_partial_graphs(base_dir, output_dir, num_graphs)
 
