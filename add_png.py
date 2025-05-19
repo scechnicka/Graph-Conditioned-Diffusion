@@ -1,7 +1,7 @@
 import os
 
 # Specify the directory containing the files to be renamed
-directory = 
+directory = path/to/diffusion_model_graph_outputs/real/image
 
 # Loop through each file in the directory
 for filename in os.listdir(directory):
