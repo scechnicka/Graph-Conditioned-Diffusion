@@ -121,10 +121,10 @@ if __name__ == "__main__":
     #         ]
     #use_distances = True # if false treats all distances > 0 as 'connected' and binarizes mask
     # if we want to add distances we have to add it to the Attention class
-    input_folder = '/vol/biomedic3/sc7718/Graph_conditioned_diffusion/kidney_preprocessed/'
-    input_folder_vectors = '/vol/biomedic3/sc7718/Graph_conditioned_diffusion/BYOL/feature_vecs/'
-    output_filename = 'conditioning_extracted_1024.npy'
-    #output_folder = '/vol/biomedic3/sc7718/Graph_conditioned_diffusion/BYOL/conditioning_output_BYOL/'    
+    input_folder = path/to/preprocessed_data
+    input_folder_vectors = path/to/feature/vectors
+    output_filename = outputpath/to/conditioning/vectors
+    
 
 
     # Get the list of folders containing the data
