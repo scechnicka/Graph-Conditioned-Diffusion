@@ -70,8 +70,8 @@ def process_graphs(base_dir, output_dir):
         print(f"Processed graph {folder}, generated 2 new graphs.")
 
 # Paths for the base and output directories
-base_dir = 
-output_dir = 
+base_dir = path/to/preprocessed
+output_dir = path/to/generated_graphs/removed_node
 
 # Process all graphs in the base directory
 process_graphs(base_dir, output_dir)
