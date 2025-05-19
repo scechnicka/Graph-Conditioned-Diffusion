@@ -117,8 +117,8 @@ def save_features(features, filename):
                     f"Average Area: {feature['Average Area']}, Bounding Box: {feature['Bounding Box']}\n")
 
 
-input_folder = '/vol/biomedic3/sc7718/Graph_conditioned_diffusion/train_data_npz/'
-base_output_folder = '/vol/biomedic3/sc7718/Graph_conditioned_diffusion/kidney_preprocessed/'
+input_folder = 
+base_output_folder = 
 npz_files = glob.glob(os.path.join(input_folder, '*.npz'))
 total_files = len(npz_files)
 processed_files = 0
