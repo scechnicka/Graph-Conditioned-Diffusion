@@ -59,7 +59,6 @@ def convert_pngs_to_npys(input_dir, output_dir):
                 print(f"Saved {npy_file_path}")
 
 # Update these paths to match your directory structure
-input_dir = "/home/atuin/b143dc/b143dc22/GCD/Diffusion_model_graph_outputs/copy_paste_short/manual_labels"
-output_dir = "/home/atuin/b143dc/b143dc22/GCD/Diffusion_model_graph_outputs/copy_paste_short/manual_labels_npy"
-
+input_dir = 
+output_dir = #
 convert_pngs_to_npys(input_dir, output_dir)
