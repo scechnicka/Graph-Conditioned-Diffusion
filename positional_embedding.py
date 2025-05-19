@@ -14,13 +14,9 @@ image_size = 1024  # Example size, adjust as needed
 patch_size = 64   # Adjust based on your needs
 sequence_length = (image_size // patch_size) ** 2  # Number of patches
 embedding_dim = 128  # Example embedding dimension, adjust as needed
-base_path = '/vol/biomedic3/sc7718/Graph_conditioned_diffusion/kidney_preprocessed/'
+base_path = 
 # Example image paths (hypothetical, replace with actual paths)
-image_paths = [
-    '/vol/biomedic3/sc7718/Graph_conditioned_diffusion/kidney_preprocessed/results0/results0/segment_1_718_982_class_1.png',
-    '/vol/biomedic3/sc7718/Graph_conditioned_diffusion/kidney_preprocessed/results1/results1/segment_1_712_979_class_1.png',
-    '/vol/biomedic3/sc7718/Graph_conditioned_diffusion/kidney_preprocessed/results1080/results1080/segment_10_425_856_class_1.png'
-]
+image_paths = []
 
 # Sinusoidal Embedding Function
 def get_sinusoidal_embeddings(n_positions, embedding_dim):
