@@ -79,7 +79,8 @@ def process_graph_and_save(base_dir, output_dir):
     print(f"Saved modified graph for {graph1_dir}, with node {swapped_node2} from {graph2_dir}.")
 
 # Paths for the base and output directories
-base_dir = 
-output_dir = 
+base_dir = path/to/preprocessed
+output_dir = path/to/generated_graphs/exchange_one_node
+
 # Process one random graph pair
 process_graph_and_save(base_dir, output_dir)
