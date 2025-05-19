@@ -387,10 +387,8 @@ def toy():
 
 if __name__ == '__main__':
     parser = ArgumentParser(formatter_class=ArgumentDefaultsHelpFormatter)
-    #parser.add_argument('--path_real', type=str, default='/home/atuin/b143dc/b143dc22/MIDL/URCDM_samples/real_private/mag2_test', help='Path to the real images')
-    #parser.add_argument('--path_fake', type=str, default='/home/atuin/b143dc/b143dc22/MIDL/URCDM_samples/private/mag2/mag2_v2_patches1024', help='Path to the fake images')
-    parser.add_argument('--path_real', type=str, default='/vol/biomedic3/sc7718/Unet_renal_segmentation/results2/train_data_pngs/', help='Path to the real images')
-    parser.add_argument('--path_fake', type=str, default='/vol/biomedic2/jhb119/generated-cond-images', help='Path to the fake images')
+     parser.add_argument('--path_real', type=str, help='Path to the real images')
+    parser.add_argument('--path_fake', type=str,  help='Path to the fake images')
     parser.add_argument('--batch_size', type=int, default=50, help='Batch size to use')
     parser.add_argument('--k', type=int, default=3, help='Batch size to use')
     parser.add_argument('--num_samples', type=int, default=20000, help='number of samples to use')
