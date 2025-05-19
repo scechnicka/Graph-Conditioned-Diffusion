@@ -319,8 +319,8 @@ def generate_partial_graphs(base_dir, output_dir, num_graphs):
     
 
 # Example usage
-base_dir = '/vol/biomedic3/sc7718/Graph_conditioned_diffusion/kidney_preprocessed/'
-output_dir = '/vol/biomedic3/sc7718/Graph_conditioned_diffusion/generated_graphs/partial_extracted/'  
+base_dir = 
+output_dir =   
 num_graphs = 10000
 generate_partial_graphs(base_dir, output_dir, num_graphs)
 
