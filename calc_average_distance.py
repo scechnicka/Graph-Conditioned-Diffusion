@@ -1,7 +1,7 @@
 import os
 
 # Assuming the folder path is given or known, let's use a mock path for demonstration purposes
-folder_path = "/home/atuin/b143dc/b143dc22/GCD/Diffusion_model_graph_outputs/interpolated/manual/"
+folder_path = 
 
 # This function extracts the X and Y values from the subfolder names and calculates their averages
 def calculate_average_xy(folder_path):
