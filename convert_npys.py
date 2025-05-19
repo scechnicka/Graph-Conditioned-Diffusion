@@ -36,7 +36,7 @@ def convert_file(filename):
 
 
 # Example usage
-directory = 
+directory = path/to/diffusion_model_graph_outputs/modified/image/changed_labels/
 
 for filename in os.listdir(directory):
     if filename.endswith(".npy"):
