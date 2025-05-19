@@ -58,7 +58,7 @@ class GraphEncoder(nn.Module):
         return z
 
 if __name__ == "__main__":
-    input_folder = '/home/atuin/b143dc/b143dc22/GCD/generated_graphs/removed_node_graphs'
+    input_folder = path/where/generated_graphs/removed_nodes_live
 
     subdirectories = [d for d in os.listdir(input_folder) if os.path.isdir(os.path.join(input_folder, d))]
 
