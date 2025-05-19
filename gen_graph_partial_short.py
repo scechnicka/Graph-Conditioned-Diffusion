@@ -331,8 +331,8 @@ def generate_partial_graphs(base_dir, output_dir, num_graphs):
     
 
 # Example usage
-base_dir = 
-output_dir = 
+base_dir = path/to/preprocessed
+output_dir = path/to/generated_graphs/partial_manual_short
 num_graphs = 10000
 generate_partial_graphs(base_dir, output_dir, num_graphs)
 
