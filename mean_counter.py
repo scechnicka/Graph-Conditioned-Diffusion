@@ -27,7 +27,7 @@ def calculate_mean_std(folder_path):
     return mean, std
 
 # Example usage
-folder_path = '/vol/biomedic3/sc7718/Graph_conditioned_diffusion/graph_prepross_kidney/results1010/results1010/'
+folder_path = 
 mean, std = calculate_mean_std(folder_path)
 print(f"Mean: {mean}")
 print(f"Standard Deviation: {std}")
