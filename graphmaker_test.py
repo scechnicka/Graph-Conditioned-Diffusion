@@ -14,8 +14,8 @@ from scipy.ndimage import find_objects
 import math
 import h5py
 
-ids_path = 
-h5_path = 
+ids_path = path/to/h5/file/with_test_data
+h5_path = same/path/as_above
 colors = ['red','green','blue','cyan']
 
 colors = np.array([[0, 0, 0],  # Black
@@ -348,7 +348,7 @@ def main(base_output_folder):
 if __name__ == "__main__":
     # Define the input directory where .npz files are located
     # Define the output directory where you want to save the results
-    base_output_folder = 
+    base_output_folder = where/you/want/preprocessed/data
 
     # Run the main function
     main(base_output_folder)
