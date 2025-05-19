@@ -59,6 +59,6 @@ def convert_pngs_to_npys(input_dir, output_dir):
                 print(f"Saved {npy_file_path}")
 
 # Update these paths to match your directory structure
-input_dir = 
-output_dir = #
+input_dir = path/to/mask_conditioned/labels_pure
+output_dir = path/tp/mask_conditioned/labels_npy
 convert_pngs_to_npys(input_dir, output_dir)
