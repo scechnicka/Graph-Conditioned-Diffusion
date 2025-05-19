@@ -322,9 +322,9 @@ def main(input_folder, base_output_folder):
 
 if __name__ == "__main__":
     # Define the input directory where .npz files are located
-    input_folder = '/vol/biomedic3/sc7718/Graph_conditioned_diffusion/train_data_npz/'
+    input_folder = 
     # Define the output directory where you want to save the results
-    base_output_folder = '/vol/biomedic3/sc7718/Graph_conditioned_diffusion/kidney_preprocessed/'
+    base_output_folder = 
 
     # Run the main function
     main(input_folder, base_output_folder)
