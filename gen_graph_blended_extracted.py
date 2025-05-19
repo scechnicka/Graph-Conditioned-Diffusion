@@ -181,7 +181,7 @@ def generate_blended_graphs(base_dir, output_dir, num_graphs):
         #image_with_overlay.save(os.path.join(output_dir, f"blended_{i+1}_{combined_score:.2f}_{average_spectral_distance}_graph.png"))
 
 # Example usage
-base_dir = '/home/atuin/b143dc/b143dc22/GCD/kidney_preprocessed'
-output_dir = '/home/atuin/b143dc/b143dc22/GCD/generated_graphs/blended_extracted'  
+base_dir = path/to/preprocessed
+output_dir = path/to/generated_graphs/blended_extracted
 num_graphs = 9990
 generate_blended_graphs(base_dir, output_dir, num_graphs)
