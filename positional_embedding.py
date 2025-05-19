@@ -14,9 +14,10 @@ image_size = 1024  # Example size, adjust as needed
 patch_size = 64   # Adjust based on your needs
 sequence_length = (image_size // patch_size) ** 2  # Number of patches
 embedding_dim = 128  # Example embedding dimension, adjust as needed
-base_path = 
-# Example image paths (hypothetical, replace with actual paths)
-image_paths = []
+base_path = preprocessed_data/path
+# Example image paths 
+image_paths = [example/image_paths
+for_you/to_see_the_outputs]
 
 # Sinusoidal Embedding Function
 def get_sinusoidal_embeddings(n_positions, embedding_dim):
