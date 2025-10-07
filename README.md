@@ -53,24 +53,22 @@ Graph Conditioned Diffusion addresses key challenges in medical image synthesis:
 ### Installation
 
 Create a new conda environment and install dependencies:
-```bash
-conda create -y -n gcd python=3.11
-conda activate gcd
-pip install -e .
+```bash conda create -y -n gcd python=3.11 conda activate gcd pip install -e ```
+
 Note: Exact package versions are available in requirements.txt if needed.
-Dependencies
+### Dependencies
 The main dependencies include:
 
-PyTorch
-Diffusers
-Transformers
-NetworkX (for graph operations)
-OpenCV
-NumPy, SciPy, Pandas
+- PyTorch
+- Diffusers
+- Transformers
+- NetworkX (for graph operations)
+- OpenCV
+- NumPy, SciPy, Pandas
 
 
-Data Preparation
-Dataset Structure
+## Data Preparation
+### Dataset Structure
 Organize your histopathology dataset with the following structure:
 data/
 ├── images/
@@ -84,14 +82,14 @@ data/
 Each image should have a corresponding segmentation mask where different anatomical structures are labeled with distinct class IDs.
 Preprocessing
 Extract patches from whole slide images (WSIs) at your desired resolution:
-bashpython scripts/extract_patches.py --input /path/to/wsi --output data/images --patch_size 1024 --overlap 0
+```bash python scripts/extract_patches.py --input /path/to/wsi --output data/images --patch_size 1024 --overlap 0```
 Generate multi-resolution copies for cascaded diffusion training:
-bashpython scripts/create_multires_dataset.py --input data/images --output data/multires --sizes 64 256 1024
+```bash python scripts/create_multires_dataset.py --input data/images --output data/multires --sizes 64 256 1024```
 
 Graph Construction
 Creating Ground Truth Graphs
 Generate graph representations from your segmentation masks:
-bashpython graphmaker.py --masks data/masks/train --output data/graphs/train --num_classes 4
+```bash python graphmaker.py --masks data/masks/train --output data/graphs/train --num_classes 4```
 This creates graphs where:
 
 Nodes represent individual anatomical structures (e.g., each tubule, each glomerulus)
@@ -100,48 +98,48 @@ Node features include class labels, BYOL embeddings, and positional encodings
 
 Graph Feature Extraction
 Extract rich feature representations for each graph node:
-bashpython concatenate_vectors.py --images data/images/train --masks data/masks/train --graphs data/graphs/train --output data/graph_features/train --byol_model models/byol.pth
+```bash python concatenate_vectors.py --images data/images/train --masks data/masks/train --graphs data/graphs/train --output data/graph_features/train --byol_model models/byol.pth```
 Graph Interventions
 Generate augmented graphs through various interventions:
 Node Removal:
-bashpython gen_graph_remove_node.py --input data/graphs/train --output data/graphs_augmented/removed
+```bash python gen_graph_remove_node.py --input data/graphs/train --output data/graphs_augmented/removed```
 Node Class Change:
-bashpython gen_graph_change_node.py --input data/graphs/train --output data/graphs_augmented/changed --source_class 1 --target_class 2
+```bash python gen_graph_change_node.py --input data/graphs/train --output data/graphs_augmented/changed --source_class 1 --target_class 2```
 Graph Interpolation:
-bashpython gen_graph_blended.py --input data/graphs/train --output data/graphs_augmented/interpolated --num_samples 1000
+```bash python gen_graph_blended.py --input data/graphs/train --output data/graphs_augmented/interpolated --num_samples 1000```
 Cut-Paste Augmentation:
-bashpython gen_graph_partial.py --input data/graphs/train --output data/graphs_augmented/cutpaste --max_subgraphs 3
+```bash python gen_graph_partial.py --input data/graphs/train --output data/graphs_augmented/cutpaste --max_subgraphs 3```
 
 Model Training
 Training the Graph Transformer
 The graph transformer processes graph structures and generates embeddings for diffusion conditioning:
-bashpython graph_conditioning_embedder.py --graph_dir data/graphs/train --features_dir data/graph_features/train --output models/graph_transformer --num_layers 6 --hidden_dim 512 --num_heads 8 --epochs 100
+```bash python graph_conditioning_embedder.py --graph_dir data/graphs/train --features_dir data/graph_features/train --output models/graph_transformer --num_layers 6 --hidden_dim 512 --num_heads 8 --epochs 100```
 Training the Cascaded Diffusion Models
 Base Model (64×64):
-bashpython train_diffusion.py --images data/multires/64 --graphs data/graphs/train --graph_model models/graph_transformer --output models/diffusion_base --resolution 64 --batch_size 64 --epochs 500
+```bash python train_diffusion.py --images data/multires/64 --graphs data/graphs/train --graph_model models/graph_transformer --output models/diffusion_base --resolution 64 --batch_size 64 --epochs 500```
 Super-Resolution Model 1 (64→256):
-bashpython train_diffusion.py --images data/multires/256 --graphs data/graphs/train --graph_model models/graph_transformer --conditioning_images data/multires/64 --output models/diffusion_sr1 --resolution 256 --batch_size 32 --epochs 300
+```bash python train_diffusion.py --images data/multires/256 --graphs data/graphs/train --graph_model models/graph_transformer --conditioning_images data/multires/64 --output models/diffusion_sr1 --resolution 256 --batch_size 32 --epochs 300```
 Super-Resolution Model 2 (256→1024):
-bashpython train_diffusion.py --images data/multires/1024 --graphs data/graphs/train --graph_model models/graph_transformer --conditioning_images data/multires/256 --output models/diffusion_sr2 --resolution 1024 --batch_size 8 --epochs 300
+```bash python train_diffusion.py --images data/multires/1024 --graphs data/graphs/train --graph_model models/graph_transformer --conditioning_images data/multires/256 --output models/diffusion_sr2 --resolution 1024 --batch_size 8 --epochs 300```
 
 Generating Synthetic Images
 Basic Generation
 Generate synthetic images from existing graphs:
-bashpython generate_images.py --graphs data/graphs/test --base_model models/diffusion_base --sr1_model models/diffusion_sr1 --sr2_model models/diffusion_sr2 --graph_model models/graph_transformer --output samples/synthetic --num_samples 100 --batch_size 4
+```bash python generate_images.py --graphs data/graphs/test --base_model models/diffusion_base --sr1_model models/diffusion_sr1 --sr2_model models/diffusion_sr2 --graph_model models/graph_transformer --output samples/synthetic --num_samples 100 --batch_size 4 ```
 Controlled Generation with Interventions
 Generate images with modified graph structures:
-bashpython generate_images.py --graphs data/graphs_augmented/interpolated --base_model models/diffusion_base --sr1_model models/diffusion_sr1 --sr2_model models/diffusion_sr2 --graph_model models/graph_transformer --output samples/synthetic_controlled --num_samples 500 --batch_size 4
+```bash python generate_images.py --graphs data/graphs_augmented/interpolated --base_model models/diffusion_base --sr1_model models/diffusion_sr1 --sr2_model models/diffusion_sr2 --graph_model models/graph_transformer --output samples/synthetic_controlled --num_samples 500 --batch_size 4```
 Complete Pipeline
 Run the full generation pipeline including graph creation and interventions:
-bashbash scripts/generate_full_dataset.sh --size 1000 --output datasets/synthetic
+```bash bash scripts/generate_full_dataset.sh --size 1000 --output datasets/synthetic```
 
 Evaluation
 Image Quality Metrics
 Evaluate generated images using FID, Precision, and Recall:
-bashpython evaluation.py --real_images data/images/test --generated_images samples/synthetic --metrics fid precision recall --output results/quality_metrics.json
+```bash python evaluation.py --real_images data/images/test --generated_images samples/synthetic --metrics fid precision recall --output results/quality_metrics.json```
 Downstream Segmentation Task
 Train a segmentation model on synthetic data and evaluate on real test data:
-bashpython train_segmentation.py --train_images samples/synthetic --train_masks samples/synthetic_masks --test_images data/images/test --test_masks data/masks/test --output experiments/segmentation --epochs 100
+```bash python train_segmentation.py --train_images samples/synthetic --train_masks samples/synthetic_masks --test_images data/images/test --test_masks data/masks/test --output experiments/segmentation --epochs 100```
 Expected metrics:
 
 Dice Score: ~89.85%
@@ -149,7 +147,7 @@ AJI Score: ~66.60%
 
 Improved Precision and Recall
 Compute improved precision and recall metrics:
-bashpython impr_prec_rec.py --real_dir data/images/test --generated_dir samples/synthetic --output results/precision_recall.json
+```bash python impr_prec_rec.py --real_dir data/images/test --generated_dir samples/synthetic --output results/precision_recall.json```
 
 Results
 Image Quality Comparison
