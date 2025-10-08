@@ -98,9 +98,9 @@ Each image should have a corresponding segmentation mask where different anatomi
 
 Prepare your data by:
 
-Extracting patches from whole slide images (WSIs) at your desired resolution (e.g., 1024×1024)
-Creating corresponding segmentation masks with distinct class IDs for each anatomical structure
-Generating multi-resolution versions (64×64, 256×256, 1024×1024) for cascaded diffusion training
+1. Extracting patches from whole slide images (WSIs) at your desired resolution (e.g., 1024×1024)
+2. Creating corresponding segmentation masks with distinct class IDs for each anatomical structure
+3. Generating multi-resolution versions (64×64, 256×256, 1024×1024) for cascaded diffusion training
 ---
 
 ## Graph Construction
