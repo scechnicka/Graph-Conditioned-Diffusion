@@ -5,7 +5,6 @@ This repository contains the code and model implementation for the paper **"Grap
 Graph Conditioned Diffusion (GCD) introduces a novel approach to generate synthetic histopathology images with explicit control over structure and content through graph-based representations. This enables the generation of diverse, privacy-preserving datasets that maintain the statistical properties necessary for training robust downstream models.
 
 📜 [Read the Paper](https://arxiv.org/abs/YOUR_ARXIV_ID)  
-🤗 [Try our Interactive Demo](https://huggingface.co/YOUR_DEMO_LINK)
 
 ---
 
@@ -97,18 +96,11 @@ Each image should have a corresponding segmentation mask where different anatomi
 
 ### Preprocessing
 
-Extract patches from whole slide images (WSIs) at your desired resolution:
+Prepare your data by:
 
-```bash
-python scripts/extract_patches.py --input /path/to/wsi --output data/images --patch_size 1024 --overlap 0
-```
-
-Generate multi-resolution copies for cascaded diffusion training:
-
-```bash
-python scripts/create_multires_dataset.py --input data/images --output data/multires --sizes 64 256 1024
-```
-
+Extracting patches from whole slide images (WSIs) at your desired resolution (e.g., 1024×1024)
+Creating corresponding segmentation masks with distinct class IDs for each anatomical structure
+Generating multi-resolution versions (64×64, 256×256, 1024×1024) for cascaded diffusion training
 ---
 
 ## Graph Construction
