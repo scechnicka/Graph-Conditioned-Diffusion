@@ -278,12 +278,13 @@ python impr_prec_rec.py --real_dir data/images/test --generated_dir samples/synt
 If you use this code or find our work helpful, please cite:
 
 ```bibtex
-@inproceedings{cechnicka2024graph,
-  title={Graph Conditioned Diffusion for Controllable Histopathology Image Generation},
-  author={Cechnicka, Sarah and Baugh, Matthew and Zhang, Weitong and Dombrowski, Mischa and Li, Zhe and Paetzold, Johannes C. and Roufosse, Candice and Kainz, Bernhard},
-  booktitle={International Conference on Medical Image Computing and Computer-Assisted Intervention},
-  year={2024},
-  organization={Springer}
+@inproceedings{cechnicka2025graph,
+  title={Graph Conditioned Diffusion for Controllable Histopathology Image},
+  author={Cechnicka, Sarah and Baugh$^1$, Matthew and Dombrowski, Mischa and Li, Zhe and Paetzold, Johannes C},
+  booktitle={Reconstruction and Imaging Motion Estimation, and Graphs in Biomedical Image Analysis: First International Workshop, RIME 2025, and 7th International Workshop, GRAIL 2025, Daejeon, South Korea, September 27, 2025, Proceedings},
+  pages={172},
+  year={2025},
+  organization={Springer Nature}
 }
 ```
 
