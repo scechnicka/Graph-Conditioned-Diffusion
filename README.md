@@ -278,14 +278,32 @@ python impr_prec_rec.py --real_dir data/images/test --generated_dir samples/synt
 If you use this code or find our work helpful, please cite:
 
 ```bibtex
-@inproceedings{cechnicka2025graph,
-  title={Graph Conditioned Diffusion for Controllable Histopathology Image},
-  author={Cechnicka, Sarah and Baugh$^1$, Matthew and Dombrowski, Mischa and Li, Zhe and Paetzold, Johannes C},
-  booktitle={Reconstruction and Imaging Motion Estimation, and Graphs in Biomedical Image Analysis: First International Workshop, RIME 2025, and 7th International Workshop, GRAIL 2025, Daejeon, South Korea, September 27, 2025, Proceedings},
-  pages={172},
-  year={2025},
-  organization={Springer Nature}
+@InProceedings{10.1007/978-3-032-06103-4_17,
+author="Cechnicka, Sarah
+and Baugh, Matthew
+and Zhang, Weitong
+and Dombrowski, Mischa
+and Li, Zhe
+and Paetzold, Johannes C.
+and Roufosse, Candice
+and Kainz, Bernhard",
+editor="Felsner, Lina
+and K{\"u}stner, Thomas
+and Maier, Andreas
+and Qin, Chen
+and Ahmadi, Seyed-Ahmad
+and Kazi, Anees
+and Hu, Xiaoling",
+title="Graph Conditioned Diffusion for Controllable Histopathology Image Generation",
+booktitle="Reconstruction and Imaging Motion Estimation, and Graphs in Biomedical Image Analysis",
+year="2026",
+publisher="Springer Nature Switzerland",
+address="Cham",
+pages="172--183",
+abstract="Recent advances in Diffusion Probabilistic Models (DPMs) have set new standards in high-quality image synthesis. Yet, controlled generation remains challenging particularly in sensitive areas such as medical imaging. Medical images feature inherent structure such as consistent spatial arrangement, shape or texture, all of which are critical for diagnosis. However, existing DPMs operate in noisy latent spaces that lack semantic structure and strong priors, making it difficult to ensure meaningful control over generated content. To address this, we propose graph-based object-level representations for Graph-Conditioned-Diffusion. Our approach generates graph nodes corresponding to each major structure in the image, encapsulating their individual features and relationships. These graph representations are processed by a transformer module and integrated into a diffusion model via the text-conditioning mechanism, enabling fine-grained control over generation. We evaluate this approach using a real-world histopathology use case, demonstrating that our generated data can reliably substitute for annotated patient data in downstream segmentation tasks. The code is available here.",
+isbn="978-3-032-06103-4"
 }
+
 ```
 
 ---
