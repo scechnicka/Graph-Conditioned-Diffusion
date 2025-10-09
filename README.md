@@ -4,7 +4,7 @@ This repository contains the code and model implementation for the paper **"Grap
 
 Graph Conditioned Diffusion (GCD) introduces a novel approach to generate synthetic histopathology images with explicit control over structure and content through graph-based representations. This enables the generation of diverse, privacy-preserving datasets that maintain the statistical properties necessary for training robust downstream models.
 
-📜 [Read the Paper]((https://arxiv.org/abs/2510.07129))  
+📜 [Read the Paper](https://arxiv.org/abs/2510.07129)  
 
 ---
 
