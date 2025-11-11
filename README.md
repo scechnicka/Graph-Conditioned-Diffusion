@@ -167,55 +167,48 @@ The graph transformer processes graph structures and generates embeddings for di
 python graph_conditioning_embedder.py --graph_dir data/graphs/train --features_dir data/graph_features/train --output models/graph_transformer --num_layers 6 --hidden_dim 512 --num_heads 8 --epochs 100
 ```
 
-### Training the Cascaded Diffusion Models
+### Training the Diffusion Models
+The repository includes three training approaches based on different conditioning methods:
 
-**Base Model (64×64):**
-
-```bash
-python train_diffusion.py --images data/multires/64 --graphs data/graphs/train --graph_model models/graph_transformer --output models/diffusion_base --resolution 64 --batch_size 64 --epochs 500
-```
-
-**Super-Resolution Model 1 (64→256):**
+**Graph-based Training:**
 
 ```bash
-python train_diffusion.py --images data/multires/256 --graphs data/graphs/train --graph_model models/graph_transformer --conditioning_images data/multires/64 --output models/diffusion_sr1 --resolution 256 --batch_size 32 --epochs 300
+python graph/train_graph.py
 ```
 
-**Super-Resolution Model 2 (256→1024):**
+**SManual Feature Training:**
 
 ```bash
-python train_diffusion.py --images data/multires/1024 --graphs data/graphs/train --graph_model models/graph_transformer --conditioning_images data/multires/256 --output models/diffusion_sr2 --resolution 1024 --batch_size 8 --epochs 300
+python manual/train_encoded.py
 ```
 
+**BYOL Feature Training:**
+
+```bash
+python predicted/train_byol.py
+```
+Each training script uses its corresponding dataset loader (patient_dataset_graph.py, patient_dataset_encoded.py, or patient_dataset_byol.py) to prepare the data with the appropriate conditioning features.
 ---
 
 ## Generating Synthetic Images
 
 ### Basic Generation
 
-Generate synthetic images from existing graphs:
+**Sampling with Different Conditioning Methods**
+The repository provides three sampling approaches corresponding to the training methods:
+**Graph-based Generation:**
 
 ```bash
-python generate_images.py --graphs data/graphs/test --base_model models/diffusion_base --sr1_model models/diffusion_sr1 --sr2_model models/diffusion_sr2 --graph_model models/graph_transformer --output samples/synthetic --num_samples 100 --batch_size 4
+python graph/sample_cond.py
 ```
-
-### Controlled Generation with Interventions
-
-Generate images with modified graph structures:
-
+**Manual Feature Generation:**
 ```bash
-python generate_images.py --graphs data/graphs_augmented/interpolated --base_model models/diffusion_base --sr1_model models/diffusion_sr1 --sr2_model models/diffusion_sr2 --graph_model models/graph_transformer --output samples/synthetic_controlled --num_samples 500 --batch_size 4
+python graph/sample_cond.py
 ```
-
-### Complete Pipeline
-
-Run the full generation pipeline including graph creation and interventions:
-
+**BYOL Feature Generation:**
 ```bash
-bash scripts/generate_full_dataset.sh --size 1000 --output datasets/synthetic
+python predicted/sample_cond.py
 ```
-
----
 
 ## Evaluation
 
