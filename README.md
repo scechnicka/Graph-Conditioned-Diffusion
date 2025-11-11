@@ -52,13 +52,11 @@ Graph Conditioned Diffusion addresses key challenges in medical image synthesis:
 ### Installation
 
 Create a new conda environment and install dependencies:
-
 ```bash
 conda create -y -n gcd python=3.11
 conda activate gcd
 pip install -e .
 ```
-
 Note: Exact package versions are available in `requirements.txt` if needed.
 
 ### Dependencies
@@ -79,7 +77,6 @@ The main dependencies include:
 ### Dataset Structure
 
 Organize your histopathology dataset with the following structure:
-
 ```
 data/
 ├── images/
@@ -100,7 +97,9 @@ Prepare your data by:
 
 1. Extracting patches from whole slide images (WSIs) at your desired resolution (e.g., 1024×1024)
 2. Creating corresponding segmentation masks with distinct class IDs for each anatomical structure
-3. Generating multi-resolution versions (64×64, 256×256, 1024×1024) for cascaded diffusion training
+3. Organizing images and masks into the directory structure shown above
+
+**Note:** Preprocessing and multi-resolution dataset creation scripts are not included in this repository. You will need to implement your own preprocessing pipeline based on your specific dataset requirements.
 ---
 
 ## Graph Construction
@@ -108,7 +107,6 @@ Prepare your data by:
 ### Creating Ground Truth Graphs
 
 Generate graph representations from your segmentation masks:
-
 ```bash
 python graphmaker.py --masks data/masks/train --output data/graphs/train --num_classes 4
 ```
@@ -122,7 +120,6 @@ This creates graphs where:
 ### Graph Feature Extraction
 
 Extract rich feature representations for each graph node:
-
 ```bash
 python concatenate_vectors.py --images data/images/train --masks data/masks/train --graphs data/graphs/train --output data/graph_features/train --byol_model models/byol.pth
 ```
@@ -132,25 +129,21 @@ python concatenate_vectors.py --images data/images/train --masks data/masks/trai
 Generate augmented graphs through various interventions:
 
 **Node Removal:**
-
 ```bash
 python gen_graph_remove_node.py --input data/graphs/train --output data/graphs_augmented/removed
 ```
 
 **Node Class Change:**
-
 ```bash
 python gen_graph_change_node.py --input data/graphs/train --output data/graphs_augmented/changed --source_class 1 --target_class 2
 ```
 
 **Graph Interpolation:**
-
 ```bash
 python gen_graph_blended.py --input data/graphs/train --output data/graphs_augmented/interpolated --num_samples 1000
 ```
 
 **Cut-Paste Augmentation:**
-
 ```bash
 python gen_graph_partial.py --input data/graphs/train --output data/graphs_augmented/cutpaste --max_subgraphs 3
 ```
@@ -162,84 +155,87 @@ python gen_graph_partial.py --input data/graphs/train --output data/graphs_augme
 ### Training the Graph Transformer
 
 The graph transformer processes graph structures and generates embeddings for diffusion conditioning:
-
 ```bash
 python graph_conditioning_embedder.py --graph_dir data/graphs/train --features_dir data/graph_features/train --output models/graph_transformer --num_layers 6 --hidden_dim 512 --num_heads 8 --epochs 100
 ```
 
 ### Training the Diffusion Models
+
 The repository includes three training approaches based on different conditioning methods:
 
 **Graph-based Training:**
-
 ```bash
 python graph/train_graph.py
 ```
 
-**SManual Feature Training:**
-
+**Manual Feature Training:**
 ```bash
 python manual/train_encoded.py
 ```
 
 **BYOL Feature Training:**
-
 ```bash
 python predicted/train_byol.py
 ```
-Each training script uses its corresponding dataset loader (patient_dataset_graph.py, patient_dataset_encoded.py, or patient_dataset_byol.py) to prepare the data with the appropriate conditioning features.
+
+Each training script uses its corresponding dataset loader (`patient_dataset_graph.py`, `patient_dataset_encoded.py`, or `patient_dataset_byol.py`) to prepare the data with the appropriate conditioning features.
+
 ---
 
 ## Generating Synthetic Images
 
-### Basic Generation
+### Sampling with Different Conditioning Methods
 
-**Sampling with Different Conditioning Methods**
 The repository provides three sampling approaches corresponding to the training methods:
-**Graph-based Generation:**
 
+**Graph-based Generation:**
 ```bash
 python graph/sample_cond.py
 ```
+
 **Manual Feature Generation:**
 ```bash
-python graph/sample_cond.py
+python manual/sample_cond.py
 ```
+
 **BYOL Feature Generation:**
 ```bash
 python predicted/sample_cond.py
 ```
+
+**Unconditional Sampling (Graph):**
+```bash
+python graph/sample.py
+```
+
+Each sampling script generates synthetic histopathology images using the models trained with the corresponding conditioning approach.
+
+---
 
 ## Evaluation
 
 ### Image Quality Metrics
 
 Evaluate generated images using FID, Precision, and Recall:
-
 ```bash
 python evaluation.py --real_images data/images/test --generated_images samples/synthetic --metrics fid precision recall --output results/quality_metrics.json
 ```
 
-### Downstream Segmentation Task
-
-Train a segmentation model on synthetic data and evaluate on real test data:
-
-```bash
-python train_segmentation.py --train_images samples/synthetic --train_masks samples/synthetic_masks --test_images data/images/test --test_masks data/masks/test --output experiments/segmentation --epochs 100
-```
-
-Expected metrics:
-
-- Dice Score: ~89.85%
-- AJI Score: ~66.60%
-
 ### Improved Precision and Recall
 
 Compute improved precision and recall metrics:
-
 ```bash
 python impr_prec_rec.py --real_dir data/images/test --generated_dir samples/synthetic --output results/precision_recall.json
 ```
+
+### Downstream Segmentation Task
+
+The paper demonstrates that synthetic images generated with GCD can be used to train segmentation models that achieve performance comparable to models trained on real data.
+
+Expected metrics when training segmentation models on GCD-generated data:
+
+- Dice Score: ~89.85%
+- AJI Score: ~66.60%
 
 ---
 
@@ -269,7 +265,6 @@ python impr_prec_rec.py --real_dir data/images/test --generated_dir samples/synt
 ## Citation
 
 If you use this code or find our work helpful, please cite:
-
 ```bibtex
 @InProceedings{10.1007/978-3-032-06103-4_17,
 author="Cechnicka, Sarah
@@ -287,7 +282,7 @@ and Qin, Chen
 and Ahmadi, Seyed-Ahmad
 and Kazi, Anees
 and Hu, Xiaoling",
-title="Graph Conditioned Diffusion for Controllable Histopathology Image Generation",
+title="Graph Conditioned Diffusion for Controllable Histopathology Image Generation",
 booktitle="Reconstruction and Imaging Motion Estimation, and Graphs in Biomedical Image Analysis",
 year="2026",
 publisher="Springer Nature Switzerland",
@@ -296,7 +291,6 @@ pages="172--183",
 abstract="Recent advances in Diffusion Probabilistic Models (DPMs) have set new standards in high-quality image synthesis. Yet, controlled generation remains challenging particularly in sensitive areas such as medical imaging. Medical images feature inherent structure such as consistent spatial arrangement, shape or texture, all of which are critical for diagnosis. However, existing DPMs operate in noisy latent spaces that lack semantic structure and strong priors, making it difficult to ensure meaningful control over generated content. To address this, we propose graph-based object-level representations for Graph-Conditioned-Diffusion. Our approach generates graph nodes corresponding to each major structure in the image, encapsulating their individual features and relationships. These graph representations are processed by a transformer module and integrated into a diffusion model via the text-conditioning mechanism, enabling fine-grained control over generation. We evaluate this approach using a real-world histopathology use case, demonstrating that our generated data can reliably substitute for annotated patient data in downstream segmentation tasks. The code is available here.",
 isbn="978-3-032-06103-4"
 }
-
 ```
 
 ---
@@ -332,12 +326,24 @@ For questions or issues, please:
 ---
 
 ## Repository Structure
-
 ```
 .
 ├── README.md
-├── requirements.txt
+├── graph/
+│   ├── patient_dataset_graph.py          # Graph-based dataset loader
+│   ├── train_graph.py                    # Train with graph conditioning
+│   ├── sample.py                         # Unconditional sampling
+│   └── sample_cond.py                    # Conditional sampling with graphs
+├── manual/
+│   ├── patient_dataset_encoded.py        # Manual feature dataset loader
+│   ├── train_encoded.py                  # Train with manual features
+│   └── sample_cond.py                    # Conditional sampling with manual features
+├── predicted/
+│   ├── patient_dataset_byol.py           # BYOL feature dataset loader
+│   ├── train_byol.py                     # Train with BYOL features
+│   └── sample_cond.py                    # Conditional sampling with BYOL features
 ├── graphmaker.py                          # Graph construction from masks
+├── graphmaker_test.py
 ├── graph_conditioning_embedder.py         # Graph transformer training
 ├── graph_conditioning_embedder_generated.py
 ├── graph_conditioning_embedder_generated_change.py
@@ -363,9 +369,7 @@ For questions or issues, please:
 ├── ccn_extractor.py
 ├── class_encoding.py
 ├── converter.py
-├── graphmaker_test.py
 ├── manual_extractor.py
 ├── mean_counter.py
-├── temp.py
-└── generate_graphs/                      # Graph generation utilities
+└── temp.py
 ```
